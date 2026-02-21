@@ -1,71 +1,48 @@
-# RTP Basics: Media Transport in VoIP
+# RTP Basics – Media Layer in VoIP
 
 ## What is RTP?
 
-RTP (Real-time Transport Protocol) is used to carry audio and video media in VoIP systems.
+RTP (Real-time Transport Protocol) is used to carry audio and video in VoIP systems.
 
-SIP establishes the session.
-RTP transports the actual encoded media once the session is active.
+SIP is responsible for setting up and managing the session.
 
-RTP typically runs over UDP.
+Once the session is established, RTP carries the actual voice data between endpoints.
+
+---
+
+## RTP and SIP Relationship
+
+SIP handles signaling:
+- Call setup (INVITE)
+- Call progress (Ringing, OK)
+- Call termination (BYE)
+
+RTP handles media:
+- Voice packets
+- Audio stream transmission
+
+SIP does not carry voice. RTP does.
 
 ---
 
 ## Why RTP Uses UDP
 
-RTP prioritizes low latency over reliability.
+RTP typically runs over UDP because:
 
-UDP is used because:
+- Real-time communication requires low latency.
+- Retransmitting lost audio packets would cause delay.
+- Small packet loss is preferable to delayed speech.
 
-- There is no connection setup delay.
-- No retransmission delay.
-- Real-time communication is more important than perfect delivery.
-
-In voice communication, small packet loss is acceptable.
-Delays caused by retransmission are not.
+In voice calls, timing is more important than perfect delivery.
 
 ---
 
-## Core RTP Concepts
+## Basic RTP Concepts (Slightly-Advanced)
 
-### Sequence Number
-Each RTP packet includes a sequence number.
+RTP includes:
 
-Used to:
-- Detect packet loss
-- Detect out-of-order packets
+- Sequence numbers (to detect lost packets)
+- Timestamps (to maintain playback timing)
+- SSRC (to identify the stream source)
 
-### Timestamp
-Indicates the sampling instant of the media.
-
-Used to:
-- Maintain correct playback timing
-- Handle jitter
-
-### SSRC (Synchronization Source)
-Uniquely identifies the RTP stream source.
-
-Important when multiple media streams exist (e.g., conference calls).
-
----
-
-## Packet Loss and Jitter
-
-Packet Loss:
-Missing RTP packets may cause small audio glitches.
-
-Jitter:
-Variation in packet arrival timing.
-Handled using a jitter buffer on the receiver side.
-
----
-
-## Relationship Between SIP and RTP
-
-SIP negotiates the session parameters (often using SDP).
-
-After session establishment:
-RTP flows directly between endpoints.
-
-SIP handles signaling.
-RTP handles media.
+These fields help maintain smooth audio delivery during the call.
