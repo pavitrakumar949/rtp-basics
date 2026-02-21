@@ -8,8 +8,6 @@ SIP is responsible for setting up and managing the session.
 
 Once the session is established, RTP carries the actual voice data between endpoints.
 
----
-
 ## RTP and SIP Relationship
 
 SIP handles signaling:
@@ -23,7 +21,6 @@ RTP handles media:
 
 SIP does not carry voice. RTP does.
 
----
 
 ## Why RTP Uses UDP
 
@@ -35,7 +32,6 @@ RTP typically runs over UDP because:
 
 In voice calls, timing is more important than perfect delivery.
 
----
 
 ## Basic RTP Concepts (Slightly-Advanced)
 
