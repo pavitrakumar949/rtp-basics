@@ -1,4 +1,4 @@
-# RTP Basics – Media Layer in VoIP
+# RTP Basics: Media Layer in VoIP
 
 ## What is RTP?
 
