@@ -1,14 +1,14 @@
 # RTP Basics: Media Layer in VoIP
 
-## What is RTP?
+### What is RTP?
 
-RTP (Real-time Transport Protocol) is used to carry audio and video in VoIP systems.
+- RTP (Real-time Transport Protocol) is used to carry audio and video in VoIP systems.
+- SIP is responsible for setting up and managing the session.
+- Once the session is established, RTP carries the actual voice data between endpoints.
 
-SIP is responsible for setting up and managing the session.
+##
 
-Once the session is established, RTP carries the actual voice data between endpoints.
-
-## RTP and SIP Relationship
+### RTP and SIP Relationship
 
 SIP handles signaling:
 - Call setup (INVITE)
@@ -21,8 +21,9 @@ RTP handles media:
 
 SIP does not carry voice. RTP does.
 
+##
 
-## Why RTP Uses UDP
+### Why RTP Uses UDP
 
 RTP typically runs over UDP because:
 
@@ -32,8 +33,9 @@ RTP typically runs over UDP because:
 
 In voice calls, timing is more important than perfect delivery.
 
+##
 
-## Basic RTP Concepts (Slightly-Advanced)
+### Basic RTP Concepts (Slightly-Advanced)
 
 RTP includes:
 
